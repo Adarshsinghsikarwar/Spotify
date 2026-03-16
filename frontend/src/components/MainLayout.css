@@ -1,0 +1,43 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--spotify-black);
+}
+
+.main-layout-top {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Prevent sidebar/main from scrolling independently unless told to */
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #222 0%, #121212 100%);
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Custom scrollbar for main content */
+.main-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.page-content {
+  padding: 0 32px 32px 32px;
+  flex: 1;
+}

@@ -1,0 +1,73 @@
+.custom-navbar {
+  height: 70px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #282828;
+}
+
+.navbar-left .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-name {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+
+.navbar-links a {
+  color: var(--spotify-grey);
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #fff;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 16px;
+}
+
+.auth-btn {
+  padding: 10px 24px;
+  border-radius: 500px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.1s;
+}
+
+.auth-btn:hover {
+  transform: scale(1.05);
+}
+
+.signup-btn {
+  background-color: transparent;
+  color: var(--spotify-grey);
+}
+
+.signup-btn:hover {
+  color: #fff;
+}
+
+.login-btn {
+  background-color: #fff;
+  color: #000;
+}

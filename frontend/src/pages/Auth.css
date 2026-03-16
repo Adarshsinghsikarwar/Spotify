@@ -1,0 +1,156 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.auth-card {
+  background-color: #000000;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #b3b3b3;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #121212;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #1db954;
+  background-color: #1a1a1a;
+}
+
+.form-input::placeholder {
+  color: #757575;
+}
+
+.error-message {
+  color: #f15e6c;
+  font-size: 13px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #121212;
+  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid #333;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #b3b3b3;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.radio-input:checked {
+  border-color: #1db954;
+}
+
+.radio-input:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #1db954;
+  border-radius: 50%;
+}
+
+.radio-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 500px;
+  background-color: #1db954;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #1ed760;
+  transform: scale(1.04);
+}
+
+.submit-button:active {
+  background-color: #169c46;
+  transform: scale(1);
+}
+
+/* Make sure nothing interferes by forcing standard box sizing inside the container */
+.auth-container * {
+  box-sizing: border-box;
+}
