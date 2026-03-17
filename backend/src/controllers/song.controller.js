@@ -34,12 +34,14 @@ export async function createSong(req, res) {
 
     let imageFileResult = null;
     if (image && image.imageBuffer) {
-      const imageFileName = (title ? title.replace(/\s+/g, "_") : "cover") + ".jpg";
+      const imageFileName =
+        (title ? title.replace(/\s+/g, "_") : "cover") + ".jpg";
       imageFileResult = await uploadFile(image.imageBuffer, imageFileName);
     }
 
     const newSong = await songModel.create({
-      title: title || req.file.originalname.split(".").shift() || "Unknown Title",
+      title:
+        title || req.file.originalname.split(".").shift() || "Unknown Title",
       artist: artist || "Unknown Artist",
       url: fileResult.url,
       postUrl: imageFileResult ? imageFileResult.url : null,
@@ -75,6 +77,54 @@ export async function getSongs(req, res) {
     return res.status(500).json({
       success: false,
       message: "Failed to get songs",
+    });
+  }
+}
+
+export async function getLikedSongs(req, res) {
+  try {
+    const userId = req.user.id;
+    const songs = await songModel.find({ likedBy: userId });
+
+    res.status(200).json({
+      success: true,
+      message: "Liked songs retrieved successfully",
+      songs,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to get liked songs",
+    });
+  }
+}
+
+export async function likeSong(req, res) {
+  try {
+    const userId = req.user.id;
+    const { songId } = req.body;
+
+    const song = await songModel.findById(songId);
+    if (!song) {
+      return res.status(404).json({
+        message: "Song not found",
+      });
+    }
+    const alreadyLiked = song.likedBy.includes(userId);
+    if (alreadyLiked) {
+      song.likedBy.pull(userId);
+    } else {
+      song.likedBy.push(userId);
+    }
+    await song.save();
+    res.status(200).json({
+      success: true,
+      message: "Song liked/unliked successfully",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to like the song",
     });
   }
 }

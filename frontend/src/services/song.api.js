@@ -25,3 +25,21 @@ export const uploadSong = async (file, category) => {
     console.log(error);
   }
 };
+
+export const getLikedSongs = async () => {
+  try {
+    const response = await api.get("/songs/getLikedSongs");
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching liked songs:", error);
+  }
+};
+
+export const likeSong = async (songId) => {
+  try {
+    const response = await api.post("/songs/like", { songId });
+    return response.data;
+  } catch (error) {
+    console.log("Error liking song:", error);
+  }
+};

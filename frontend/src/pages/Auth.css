@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
   color: #ffffff;
+
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 

@@ -1,0 +1,110 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: #181818;
+  padding: 24px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: white;
+}
+
+.playlist-item-selection:hover {
+  background: #282828;
+}
+
+.modal-content h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-input-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #b3b3b3;
+}
+
+.modal-input-group input,
+.modal-input-group textarea {
+  background: #333;
+  border: 1px solid transparent;
+  padding: 12px;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.modal-input-group input:focus,
+.modal-input-group textarea:focus {
+  background: #404040;
+  border-color: #535353;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.modal-btn {
+  padding: 12px 24px;
+  border-radius: 500px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s;
+}
+
+.modal-btn:active {
+  transform: scale(0.95);
+}
+
+.modal-btn-cancel {
+  background: transparent;
+  color: white;
+}
+
+.modal-btn-cancel:hover {
+  color: #fff;
+}
+
+.modal-btn-create {
+  background: #1db954;
+  color: black;
+}
+
+.modal-btn-create:hover {
+  background: #1ed760;
+}
+
+.modal-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

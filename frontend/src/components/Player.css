@@ -8,8 +8,28 @@
   padding: 0 16px;
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
+  z-index: 2000;
+  transform: translateY(calc(100% - 8px));
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
 }
+
+.player.visible {
+  transform: translateY(0);
+}
+
+/* Ensure hit area for hover works even when translated */
+.player::before {
+    content: "";
+    position: absolute;
+    top: -20px; /* Extend trigger area upwards */
+    left: 0;
+    right: 0;
+    height: 20px;
+}
+
 
 .player-song-info {
   display: flex;
@@ -46,6 +66,26 @@
   font-size: 12px;
   color: var(--spotify-grey);
 }
+
+.player-like-btn {
+    color: var(--spotify-grey);
+    background: transparent;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.player-like-btn:hover {
+    color: var(--spotify-white);
+    transform: scale(1.1);
+}
+
+.player-like-btn.liked {
+    color: var(--spotify-green);
+}
+
 
 .player-controls {
   display: flex;
@@ -89,33 +129,59 @@
 .progress-bar-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   width: 100%;
 }
 
 .time {
   font-size: 11px;
   color: var(--spotify-grey);
-  min-width: 32px;
+  min-width: 40px;
+  text-align: center;
 }
 
-.progress-bar {
-  flex: 1;
+/* Slider Styling */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
   height: 4px;
-  background-color: #4d4d4d;
-  border-radius: 2px;
-  position: relative;
 }
 
-.progress {
-  width: 30%;
-  height: 100%;
+.slider::-webkit-slider-runnable-track {
+  background: #4d4d4d;
+  border-radius: 2px;
+  height: 4px;
+}
+
+.progress-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, var(--spotify-white) var(--progress-percent, 0%), #4d4d4d var(--progress-percent, 0%));
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -4px; /* Centers thumb on the track */
   background-color: var(--spotify-white);
-  border-radius: 2px;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.progress-bar:hover .progress {
-  background-color: var(--spotify-green);
+.slider:hover::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.progress-slider {
+  flex: 1;
+}
+
+.volume-slider {
+  width: 100px;
 }
 
 .player-volume {
@@ -123,24 +189,25 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   color: var(--spotify-grey);
 }
 
-.volume-bar {
-  width: 100px;
-  height: 4px;
-  background-color: #4d4d4d;
-  border-radius: 2px;
+.player-volume button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--spotify-grey);
 }
 
-.volume-level {
-  width: 70%;
-  height: 100%;
-  background-color: var(--spotify-white);
-  border-radius: 2px;
+.player-volume button:hover {
+    color: var(--spotify-white);
 }
 
-.volume-bar:hover .volume-level {
-  background-color: var(--spotify-green);
+.btn-play {
+    cursor: pointer;
+}
+
+.btn-small, .btn-skip {
+    cursor: pointer;
 }

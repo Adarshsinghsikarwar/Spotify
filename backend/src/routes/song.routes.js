@@ -1,6 +1,6 @@
 import express from "express";
 import { authArtist, authMiddleware } from "../middelwares/auth.middleware.js";
-import { createSong, getSongs } from "../controllers/song.controller.js";
+import { createSong, getSongs,getLikedSongs ,likeSong } from "../controllers/song.controller.js";
 import multer from "multer";
 
 const upload = multer({ storage: multer.memoryStorage() });
@@ -16,5 +16,7 @@ songRoutes.post(
 );
 
 songRoutes.get("/getSongs", authMiddleware, getSongs);
+songRoutes.get("/getLikedSongs", authMiddleware, getLikedSongs);
+songRoutes.post("/like", authMiddleware, likeSong);
 
 export default songRoutes;

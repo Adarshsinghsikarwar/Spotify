@@ -5,6 +5,7 @@ const songSchema = new mongoose.Schema({
   artist: String,
   url: String,
   postUrl: String,
+  likedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
   category: {
     type: String,
     enum: [
